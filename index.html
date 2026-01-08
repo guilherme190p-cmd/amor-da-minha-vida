@@ -1,167 +1,171 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Para o Amor da Minha Vida</title>
+<meta charset="UTF-8">
+<title>amor da minha vida</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
-      color: white;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b0012;
+  color: white;
+  overflow: hidden;
+}
 
-    .container {
-      width: 90%;
-      max-width: 400px;
-      text-align: center;
-    }
+.book {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  transition: transform 0.6s ease;
+}
 
-    img {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 20px;
-      border: 3px solid #ff5fa2;
-    }
+.page {
+  min-width: 100vw;
+  height: 100vh;
+  padding: 30px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
 
-    input {
-      width: 100%;
-      padding: 12px;
-      border-radius: 8px;
-      border: none;
-      outline: none;
-      margin-top: 10px;
-      font-size: 16px;
-    }
+.page p {
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 600px;
+}
 
-    button {
-      margin-top: 15px;
-      padding: 12px;
-      width: 100%;
-      border: none;
-      border-radius: 8px;
-      background: #ff5fa2;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-    }
+.center {
+  text-align: center;
+  align-items: center;
+}
 
-    .hint {
-      margin-top: 10px;
-      font-size: 14px;
-      opacity: 0.7;
-    }
+.photo {
+  position: absolute;
+  width: 160px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+  transform: rotate(-4deg);
+}
 
-    .error {
-      color: #ff7070;
-      margin-top: 10px;
-    }
+.photo.right {
+  right: 20px;
+  bottom: 40px;
+  transform: rotate(5deg);
+}
 
-    .hidden {
-      display: none;
-    }
+.photo.left {
+  left: 20px;
+  top: 60px;
+}
 
-    .love-page {
-      animation: fade 1.2s ease;
-    }
-
-    @keyframes fade {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* animação dos corações */
-    .heart {
-      display: inline-block;
-      animation: pulse 1.6s infinite;
-    }
-
-    .heart:nth-child(1) { animation-delay: 0s; }
-    .heart:nth-child(2) { animation-delay: 0.2s; }
-    .heart:nth-child(3) { animation-delay: 0.4s; }
-    .heart:nth-child(4) { animation-delay: 0.6s; }
-
-    @keyframes pulse {
-      0%   { transform: scale(1); }
-      50%  { transform: scale(1.25); }
-      100% { transform: scale(1); }
-    }
-  </style>
+.next {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: white;
+  padding: 12px 18px;
+  font-size: 18px;
+  border-radius: 30px;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- PÁGINA DE LOGIN -->
-  <div class="container" id="login">
-    <img src="IMG-20260108-WA0040.jpg"> alt="sorriso mais lindo do mundo">
+<div class="book" id="book">
 
-    <h2>área restrita 🤍</h2>
-    <p>só entra quem mora no meu coração</p>
-
-    <input type="password" id="senha" placeholder="digite a senha">
-    <button onclick="verificar()">entrar</button>
-
-    <div class="hint">dica: quem é você?</div>
-    <div class="error" id="erro"></div>
+  <!-- CAPA -->
+  <div class="page center">
+    <h1>Beatriz</h1>
+    <p>essa é a nossa história 🤍</p>
+    <button class="next" onclick="nextPage()">→</button>
   </div>
 
-  <!-- PÁGINA DA DECLARAÇÃO -->
-  <div class="container hidden love-page" id="amor">
-    <h1>feliz 2 meses, meu amor 🤍</h1>
-
+  <!-- PAGINA 1 -->
+  <div class="page">
     <p>
-      em tão pouco tempo, você virou rotina, pensamento e cuidado.<br><br>
-      toda noite minha mente acaba em você.<br>
-      às vezes é saudade, às vezes paranoia,<br>
-      mas sempre é amor.<br><br>
-      obrigado por existir comigo.<br>
-      esses 2 meses são só o começo.
+      tudo começou no <b>09/11</b>.<br>
+      eu reagi ao seu story, aquele do aquário.<br>
+      sem imaginar que um gesto tão pequeno<br>
+      ia virar a coisa mais grande da minha vida.
     </p>
-
-    <p style="margin-top:20px;">eu te escolho todos os dias.</p>
-
-    <!-- FRASE ESCONDIDA -->
-    <p id="segredo" style="margin-top:40px; font-size:22px; opacity:0; transition:opacity 2s;">
-      <strong>
-        EU TE AMO, MEU AMOR
-        <span class="heart">🩷</span>
-        <span class="heart">🤍</span>
-        <span class="heart">🩵</span>
-        <span class="heart">💜</span>
-      </strong>
-    </p>
+    <img src="imagens/bea1.jpg" class="photo right">
+    <button class="next" onclick="nextPage()">→</button>
   </div>
 
-  <script>
-    function verificar() {
-      const senha = document.getElementById("senha").value.trim().toLowerCase();
-      const correta = "amor da sua vida";
+  <!-- PAGINA 2 -->
+  <div class="page">
+    <p>
+      no começo era amizade.<br>
+      conversa indo, conversa vindo.<br>
+      e pra ser sincero,<br>
+      inventei muita coisa pra te conquistar.
+    </p>
+    <img src="imagens/print1.png" class="photo left">
+    <button class="next" onclick="nextPage()">→</button>
+  </div>
 
-      if (senha === correta) {
-        document.getElementById("login").classList.add("hidden");
-        document.getElementById("amor").classList.remove("hidden");
+  <!-- PAGINA 3 -->
+  <div class="page">
+    <p>
+      eu já tinha duvidado do amor.<br>
+      mas com você, Beatriz,<br>
+      eu entendi que ele sempre existiu.<br>
+      só faltava a pessoa certa.
+    </p>
+    <button class="next" onclick="nextPage()">→</button>
+  </div>
 
-        setTimeout(() => {
-          document.getElementById("segredo").style.opacity = 1;
-        }, 6000);
-      } else {
-        document.getElementById("erro").innerText = "senha incorreta 😅 tenta de novo";
-      }
-    }
-  </script>
+  <!-- PAGINA 4 -->
+  <div class="page">
+    <p>
+      no <b>24/12</b>, eu criei coragem.<br>
+      me declarei.<br>
+      me entreguei.<br>
+      e ali eu soube que era de verdade.
+    </p>
+    <img src="imagens/bea2.jpg" class="photo right">
+    <button class="next" onclick="nextPage()">→</button>
+  </div>
+
+  <!-- PAGINA 5 -->
+  <div class="page">
+    <p>
+      mesmo quando pessoas duvidaram de mim,<br>
+      você nunca desistiu.<br>
+      obrigado por acreditar em mim, Beatriz.
+    </p>
+    <img src="imagens/print2.png" class="photo left">
+    <button class="next" onclick="nextPage()">→</button>
+  </div>
+
+  <!-- PAGINA FINAL -->
+  <div class="page center">
+    <p>
+      no <b>01/01/2026</b>, começamos nós.<br><br>
+      eu te amo muito.<br>
+      nada, nem a distância,<br>
+      vai separar a gente.
+    </p>
+    <h2>EU TE AMO, MEU AMOR 🩷🤍🩵💜</h2>
+  </div>
+
+</div>
+
+<script>
+let page = 0;
+function nextPage() {
+  page++;
+  document.getElementById("book").style.transform =
+    "translateX(-" + (page * 100) + "vw)";
+}
+</script>
 
 </body>
 </html>
