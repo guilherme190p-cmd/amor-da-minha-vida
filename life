@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Para o Amor da Minha Vida</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+      color: white;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 3px solid #ff5fa2;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      background: #ff5fa2;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .hint {
+      margin-top: 10px;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    .error {
+      color: #ff7070;
+      margin-top: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .love-page {
+      animation: fade 1.2s ease;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* animação dos corações */
+    .heart {
+      display: inline-block;
+      animation: pulse 1.6s infinite;
+    }
+
+    .heart:nth-child(1) { animation-delay: 0s; }
+    .heart:nth-child(2) { animation-delay: 0.2s; }
+    .heart:nth-child(3) { animation-delay: 0.4s; }
+    .heart:nth-child(4) { animation-delay: 0.6s; }
+
+    @keyframes pulse {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.25); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- PÁGINA DE LOGIN -->
+  <div class="container" id="login">
+    <img src="FOTO-DELA-AQUI.jpg" alt="sorriso mais lindo do mundo">
+
+    <h2>área restrita 🤍</h2>
+    <p>só entra quem mora no meu coração</p>
+
+    <input type="password" id="senha" placeholder="digite a senha">
+    <button onclick="verificar()">entrar</button>
+
+    <div class="hint">dica: quem é você?</div>
+    <div class="error" id="erro"></div>
+  </div>
+
+  <!-- PÁGINA DA DECLARAÇÃO -->
+  <div class="container hidden love-page" id="amor">
+    <h1>feliz 2 meses, meu amor 🤍</h1>
+
+    <p>
+      em tão pouco tempo, você virou rotina, pensamento e cuidado.<br><br>
+      toda noite minha mente acaba em você.<br>
+      às vezes é saudade, às vezes paranoia,<br>
+      mas sempre é amor.<br><br>
+      obrigado por existir comigo.<br>
+      esses 2 meses são só o começo.
+    </p>
+
+    <p style="margin-top:20px;">eu te escolho todos os dias.</p>
+
+    <!-- FRASE ESCONDIDA -->
+    <p id="segredo" style="margin-top:40px; font-size:22px; opacity:0; transition:opacity 2s;">
+      <strong>
+        EU TE AMO, MEU AMOR
+        <span class="heart">🩷</span>
+        <span class="heart">🤍</span>
+        <span class="heart">🩵</span>
+        <span class="heart">💜</span>
+      </strong>
+    </p>
+  </div>
+
+  <script>
+    function verificar() {
+      const senha = document.getElementById("senha").value.trim().toLowerCase();
+      const correta = "amor da sua vida";
+
+      if (senha === correta) {
+        document.getElementById("login").classList.add("hidden");
+        document.getElementById("amor").classList.remove("hidden");
+
+        setTimeout(() => {
+          document.getElementById("segredo").style.opacity = 1;
+        }, 6000);
+      } else {
+        document.getElementById("erro").innerText = "senha incorreta 😅 tenta de novo";
+      }
+    }
+  </script>
+
+</body>
+</html>
