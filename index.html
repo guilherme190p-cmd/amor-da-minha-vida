@@ -5,31 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amor da Minha Vida</title>
 <style>
-*{ margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
-html, body{ height:100%; background:#f5e6c4; overflow-x:hidden; color:#fff; }
+*{margin:0;padding:0;box-sizing:border-box;font-family: Arial, sans-serif;}
+html, body{height:100%;overflow-x:hidden;}
+body{background:#000;color:#fff;}
 
-/* ===== INTRO ===== */
+/* INTRO */
 #intro{
   position:fixed; inset:0;
   display:flex; justify-content:center; align-items:center;
   text-align:center;
-  font-size:40px;
-  font-weight:bold;
-  color:#c27f60;
-  background:#000; /* FUNDO PRETO */
+  font-size:40px; font-weight:bold; color:#c27f60;
+  background:#000;
   opacity:0;
   transition: opacity 3s ease;
   z-index:9999;
 }
 
-/* ===== LOGIN ===== */
+/* LOGIN */
 #login{
   display:none;
   position:fixed; inset:0;
   background:url("imagens/bea6.jpg") center/cover no-repeat;
   flex-direction:column; justify-content:center; align-items:center;
-  opacity:0;
-  transition: opacity 1s ease;
 }
 .login-box{
   background: rgba(0,0,0,0.5);
@@ -43,38 +40,32 @@ html, body{ height:100%; background:#f5e6c4; overflow-x:hidden; color:#fff; }
 .eye{ position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer; }
 button{ margin-top:10px; padding:14px 22px; border:none; border-radius:10px; background:#c27f60; color:white; font-size:18px; cursor:pointer; }
 
-/* ===== PÁGINA DE TEXTOS ===== */
-#content{
-  display:none;
-  position:fixed; inset:0;
-  background:url('imagens/bea7.jpg') center/cover no-repeat;
-  overflow-y:auto;
+/* CONTENT */
+#content{display:none; overflow-y:auto; scroll-behavior:smooth;}
+.slide{
+  position:relative;
+  min-height:100vh;
+  display:flex; justify-content:center; align-items:center;
+  text-align:justify;
   padding:50px;
-}
-.text-box{
-  background: rgba(0,0,0,0.8); /* Borda mais escura */
-  padding:30px;
-  border-radius:15px;
-  margin-bottom:50px;
-  max-width:90%;
   color:white;
   font-size:28px;
-  line-height:1.9;
-  text-align:justify;
+  line-height:1.8;
+}
+.text-box{
+  background: rgba(0,0,0,0.8);
+  padding:30px;
+  border-radius:15px;
+  max-width:90%;
+  margin:auto;
 }
 .text-box img{
-  width:200px;
-  border-radius:10px;
   display:block;
   margin:20px auto;
+  max-width:200px;
+  border-radius:10px;
 }
-.text-box h1{
-  text-align:center;
-  font-size:42px;
-  margin-bottom:30px;
-  color:white;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
-}
+.text-box h1,h2{text-align:center;}
 .whats{
   display:inline-block;
   margin-top:20px;
@@ -107,44 +98,61 @@ button{ margin-top:10px; padding:14px 22px; border:none; border-radius:10px; bac
   </div>
 </div>
 
-<!-- CONTEÚDO -->
+<!-- CONTENT -->
 <div id="content">
-  <!-- TÍTULO -->
-  <div class="text-box">
-    <h1>Essa é a nossa história, Beatriz 🤍</h1>
-    <p>Cada momento, cada conversa, cada risada que compartilhamos me mostrou que o nosso amor é único e verdadeiro.</p>
-    <img src="imagens/bea1.jpg">
+  <!-- Slide 1 -->
+  <div class="slide" style="background:url('imagens/bea2.jpg') center/cover no-repeat;">
+    <div class="text-box">
+      <h1>Essa é a nossa história, Beatriz 🤍</h1>
+      <p>Tudo começou no <b>09/11</b>, quando eu reagi ao seu story do aquário e te falar, eu nem tava botando fé que você iria responder, mas respondeu né. Quem diria que aquilo seria o início de uma amizade tão especial? Desde o primeiro instante, senti algo diferente.</p>
+    </div>
   </div>
 
-  <div class="text-box">
-    <p>Tudo começou no <b>09/11</b>, quando eu reagi ao seu story do aquário e te falar, eu nem tava botando fé que você iria responder, mas respondeu né. Quem diria que aquilo seria o início de uma amizade tão especial? Desde o primeiro instante, senti algo diferente.</p>
-    <img src="imagens/bea2.jpg">
+  <!-- Slide 2 -->
+  <div class="slide" style="background:url('imagens/bea1.jpg') center/cover no-repeat;">
+    <div class="text-box">
+      <p>Cada momento, cada conversa, cada risada que compartilhamos me mostrou que o nosso amor é único e verdadeiro.</p>
+    </div>
   </div>
 
-  <div class="text-box">
-    <p>No começo era só amizade, e pra te conquistar tive que inventar <b>muitaaaa coisa</b> e você sabe disso KKKK. Me esforcei em cada detalhe, e valeu a pena, porque encontrei o amor verdadeiro com você.</p>
-    <img src="imagens/bea3.jpg">
+  <!-- Slide 3 -->
+  <div class="slide" style="background:url('imagens/bea7.jpg') center/cover no-repeat;">
+    <div class="text-box">
+      <p>No começo era só amizade, e pra te conquistar tive que inventar <b>muitaaaa coisa</b> e você sabe disso KKKK. Me esforcei em cada detalhe, e valeu a pena, porque encontrei o amor verdadeiro com você.</p>
+      <img src="imagens/bea3.jpg">
+    </div>
   </div>
 
-  <div class="text-box">
-    <p>Quando algumas das suas amigas desconfiavam de mim, você nunca desistiu. Eu agradeço muito por isso. Hoje consigo te amar e me sentir amado de verdade por você. Mesmo com a distância, nada vai separar a gente.</p>
-    <img src="imagens/bea4.jpg">
+  <!-- Slide 4 -->
+  <div class="slide" style="background:url('imagens/bea7.jpg') center/cover no-repeat;">
+    <div class="text-box">
+      <p>Quando algumas das suas amigas desconfiavam de mim, você nunca desistiu. Eu agradeço muito por isso. Hoje consigo te amar e me sentir amado de verdade por você. Mesmo com a distância, nada vai separar a gente.</p>
+      <img src="imagens/bea4.jpg">
+    </div>
   </div>
 
-  <div class="text-box">
-    <p>Lembro do dia <b>24/12</b>, quando nos declaramos oficialmente, e depois daquilo me senti tão aliviado, porque eu conseguir falar “Eu te amo” pra pessoa que eu mais queria no momento. A gente já havia se declarado, mas ainda não tinha o pedido de namoro. Confesso que fiquei em dúvida no dia da data, mas nunca ficaria em dúvida de você. <b>01/01/2026</b>, nosso pedido de namoro, eu fiquei muito feliz, nosso ano começando com o pé direito, e vamos seguir juntos. Cada data, cada lembrança, cada emoção, me faz te querer ainda mais.</p>
-    <img src="imagens/bea5.jpg">
+  <!-- Slide 5 -->
+  <div class="slide" style="background:url('imagens/bea7.jpg') center/cover no-repeat;">
+    <div class="text-box">
+      <p>Lembro do dia <b>24/12</b>, quando nos declaramos oficialmente, e depois daquilo me senti tão aliviado, porque eu conseguir falar “Eu te amo” pra pessoa que eu mais queria no momento. A gente já havia se declarado, mas ainda não tinha o pedido de namoro. Confesso que fiquei em dúvida no dia da data, mas nunca ficaria em dúvida de você. <b>01/01/2026</b>, nosso pedido de namoro, eu fiquei muito feliz, nosso ano começando com o pé direito, e vamos seguir juntos. Cada data, cada lembrança, cada emoção, me faz te querer ainda mais.</p>
+    </div>
   </div>
 
-  <div class="text-box">
-    <p>Sempre que duvidei do nosso amor, aprendi que ele é real e verdadeiro. Com você, Beatriz, consigo me sentir completo. Cada vez que jogamos juntos, compartilhamos vídeos, risadas, ou só conversamos… meu amor por você só cresce.</p>
+  <!-- Slide 6 -->
+  <div class="slide" style="background:url('imagens/bea7.jpg') center/cover no-repeat;">
+    <div class="text-box">
+      <p>Sempre que duvidei do nosso amor, aprendi que ele é real e verdadeiro. Com você, Beatriz, consigo me sentir completo. Cada vez que jogamos juntos, compartilhamos vídeos, risadas, ou só conversamos… meu amor por você só cresce.</p>
+    </div>
   </div>
 
-  <div class="text-box">
-    <h2>EU TE AMO, MEU AMOR 🩷🤍🩵💜</h2>
-    <p>Nada vai mudar isso. Nada vai separar a gente. Você é a minha vida, meu mundo, meu tudo.</p>
-    <img src="imagens/bea5.jpg">
-    <a class="whats" href="https://wa.me/5513996032997?text=Eu%20te%20amo." target="_blank">clique aqui 💬</a>
+  <!-- Slide 7 -->
+  <div class="slide" style="background:url('imagens/bea7.jpg') center/cover no-repeat;">
+    <div class="text-box">
+      <h2>EU TE AMO, MEU AMOR 🩷🤍🩵💜</h2>
+      <p>Nada vai mudar isso. Nada vai separar a gente. Você é a minha vida, meu mundo, meu tudo.</p>
+      <img src="imagens/bea5.jpg">
+      <a class="whats" href="https://wa.me/5513996032997?text=Eu%20te%20amo." target="_blank">clique aqui 💬</a>
+    </div>
   </div>
 </div>
 
@@ -159,7 +167,6 @@ window.addEventListener("load", ()=>{
     setTimeout(()=>{
       intro.style.display="none";
       login.style.display="flex";
-      login.style.opacity="1";
     },1000);
   },3000);
 });
