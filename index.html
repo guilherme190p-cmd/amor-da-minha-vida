@@ -6,11 +6,7 @@
 <title>Amor da Minha Vida</title>
 <style>
 *{ margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
-body{
-  overflow:hidden;
-  color:#fff;
-  background:#f5e6c4; /* fundo da intro para evitar tela preta */
-}
+body{ overflow:hidden; color:#fff; background:#f5e6c4; }
 
 /* ===== INTRO ===== */
 #intro{
@@ -154,12 +150,11 @@ button{ margin-top:10px; padding:12px 20px; border:none; border-radius:10px; bac
 window.addEventListener("load", ()=>{
   const intro = document.getElementById("intro");
   const login = document.getElementById("login");
-  intro.style.opacity = "1"; // fade in
-
+  intro.style.opacity = "1";
   setTimeout(()=>{
-    intro.style.opacity = "0"; // fade out
+    intro.style.opacity = "0";
     setTimeout(()=>{
-      intro.style.display="none";
+      intro.style.display="none"; // esconde intro
       login.style.display="flex"; // mostra login
     },1000);
   },3000);
