@@ -6,17 +6,17 @@
 <title>Amor da Minha Vida</title>
 <style>
 *{ margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
-body{ overflow:hidden; color:#fff; background:#f5e6c4; }
+html, body{ height:100%; background:#f5e6c4; overflow-x:hidden; color:#fff; }
 
 /* ===== INTRO ===== */
 #intro{
   position:fixed; inset:0;
-  background:#f5e6c4;
   display:flex; justify-content:center; align-items:center;
   text-align:center;
-  font-size:36px;
+  font-size:40px;
   font-weight:bold;
   color:#c27f60;
+  background:#f5e6c4;
   opacity:0;
   transition: opacity 3s ease;
   z-index:9999;
@@ -27,7 +27,9 @@ body{ overflow:hidden; color:#fff; background:#f5e6c4; }
   display:none;
   position:fixed; inset:0;
   background:url("imagens/bea6.jpg") center/cover no-repeat;
-  display:flex; flex-direction:column; justify-content:center; align-items:center;
+  flex-direction:column; justify-content:center; align-items:center;
+  opacity:0;
+  transition: opacity 1s ease;
 }
 .login-box{
   background: rgba(0,0,0,0.5);
@@ -36,10 +38,10 @@ body{ overflow:hidden; color:#fff; background:#f5e6c4; }
 }
 .input-box{ position:relative; margin-bottom:15px; width:100%; }
 .input-box input{
-  width:100%; padding:12px; border:none; border-radius:10px; font-size:16px; text-align:center;
+  width:100%; padding:14px; border:none; border-radius:10px; font-size:18px; text-align:center;
 }
 .eye{ position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer; }
-button{ margin-top:10px; padding:12px 20px; border:none; border-radius:10px; background:#c27f60; color:white; font-size:16px; cursor:pointer; }
+button{ margin-top:10px; padding:14px 22px; border:none; border-radius:10px; background:#c27f60; color:white; font-size:18px; cursor:pointer; }
 
 /* ===== PÁGINA DE TEXTOS ===== */
 #content{
@@ -47,41 +49,49 @@ button{ margin-top:10px; padding:12px 20px; border:none; border-radius:10px; bac
   position:fixed; inset:0;
   background:url('imagens/bea7.jpg') center/cover no-repeat;
   overflow-y:auto;
-  padding:40px;
+  padding:50px;
 }
 .text-box{
-  background: rgba(0,0,0,0.5);
-  padding:20px;
+  background: rgba(0,0,0,0.8); /* Borda mais escura */
+  padding:30px;
   border-radius:15px;
-  margin-bottom:30px;
+  margin-bottom:50px;
   max-width:90%;
   color:white;
-  font-size:22px;
-  line-height:1.8;
+  font-size:28px;
+  line-height:1.9;
   text-align:justify;
+  opacity:0;
+  transform: translateY(50px);
+  transition: all 1s ease;
+}
+.text-box.show{
+  opacity:1;
+  transform: translateY(0);
 }
 .text-box img{
-  width:150px;
+  width:200px;
   border-radius:10px;
   display:block;
-  margin:15px auto;
+  margin:20px auto;
 }
 .text-box h1{
   text-align:center;
-  font-size:36px;
-  margin-bottom:20px;
+  font-size:42px;
+  margin-bottom:30px;
   color:white;
   text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
 }
 .whats{
   display:inline-block;
-  margin-top:15px;
-  padding:12px 20px;
+  margin-top:20px;
+  padding:14px 25px;
   background:#25D366;
   color:white;
   border-radius:30px;
   text-decoration:none;
   text-align:center;
+  font-size:20px;
 }
 </style>
 </head>
@@ -140,7 +150,7 @@ button{ margin-top:10px; padding:12px 20px; border:none; border-radius:10px; bac
   <div class="text-box">
     <h2>EU TE AMO, MEU AMOR 🩷🤍🩵💜</h2>
     <p>Nada vai mudar isso. Nada vai separar a gente. Você é a minha vida, meu mundo, meu tudo.</p>
-    <img src="imagens/bea7.jpg">
+    <img src="imagens/bea5.jpg">
     <a class="whats" href="https://wa.me/5513996032997?text=Eu%20te%20amo." target="_blank">clique aqui 💬</a>
   </div>
 </div>
@@ -154,8 +164,9 @@ window.addEventListener("load", ()=>{
   setTimeout(()=>{
     intro.style.opacity = "0";
     setTimeout(()=>{
-      intro.style.display="none"; // esconde intro
-      login.style.display="flex"; // mostra login
+      intro.style.display="none";
+      login.style.display="flex";
+      login.style.opacity="1";
     },1000);
   },3000);
 });
@@ -166,13 +177,30 @@ function entrar(){
   if(senha==="Amor da sua vida"){
     document.getElementById("login").style.display="none";
     document.getElementById("content").style.display="block";
+    window.scrollTo(0,0);
+    revealText();
   } else alert("senha incorreta 💔");
 }
 
-// OLHINHO SENHA
 function verSenha(){
   const s=document.getElementById("senha");
   s.type = s.type==="password"?"text":"password";
+}
+
+// CINEMATIC SCROLL
+function revealText(){
+  const boxes = document.querySelectorAll('.text-box');
+  function checkBoxes(){
+    const triggerBottom = window.innerHeight * 0.85;
+    boxes.forEach(box=>{
+      const boxTop = box.getBoundingClientRect().top;
+      if(boxTop < triggerBottom){
+        box.classList.add('show');
+      }
+    });
+  }
+  checkBoxes();
+  window.addEventListener('scroll', checkBoxes);
 }
 </script>
 
