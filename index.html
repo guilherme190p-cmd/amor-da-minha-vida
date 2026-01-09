@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -12,8 +12,14 @@ body{ overflow:hidden; color:#000; }
 /* ===== LOGIN / TELA INICIAL ===== */
 #login{
   position:fixed; inset:0;
-  background:url("imagens/IMG-20260108-WA0040.jpg") center/cover no-repeat; /* imagem correta agora */
+  background:url("imagens/IMG-20260108-WA0040.jpg") center/cover no-repeat;
   display:flex; align-items:center; justify-content:center;
+  flex-direction:column;
+}
+#login .credits{
+  position:absolute; top:10px; right:15px;
+  color:white; font-size:16px; text-align:right;
+  text-shadow: 1px 1px 5px black;
 }
 .login-box{
   background:rgba(0,0,0,0.5); padding:25px; border-radius:15px;
@@ -29,12 +35,25 @@ button{ margin-top:10px; padding:12px 20px; border:none; border-radius:10px; bac
 /* ===== LIVRO ===== */
 #content{ display:none; position:fixed; inset:0; background:#f5e6c4; overflow:hidden;}
 .book{ height:100%; width:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:40px;}
-.page{ display:none; height:100%; width:100%; position:relative; padding:20px; overflow-y:auto;}
-.page.active{ display:block; }
+.page{
+  display:none;
+  height:100%;
+  width:100%;
+  position:relative;
+  padding:20px;
+  overflow-y:auto;
+  opacity:0;
+  transition: opacity 0.7s ease;
+}
+.page.active{
+  display:block;
+  opacity:1;
+}
 .page p{ font-size:22px; line-height:1.8; text-align:justify; max-width:90%; margin:0 auto;}
 .page h1{ font-size:36px; margin-bottom:20px; text-align:center;}
 .page h2{ font-size:32px; text-align:center; margin-top:25px;}
 .photo{ width:150px; border-radius:10px; margin:15px auto; display:block;}
+.photo-large{ width:80%; max-width:600px; border-radius:15px; margin:20px auto; display:block;}
 .next, .prev{
   margin:10px; padding:10px 20px; border:none; border-radius:10px; background:#c27f60; color:white; font-size:16px; cursor:pointer;
 }
@@ -47,6 +66,10 @@ button{ margin-top:10px; padding:12px 20px; border:none; border-radius:10px; bac
 
 <!-- LOGIN -->
 <div id="login">
+  <div class="credits">
+    De: Guilherme<br>
+    Para: Beatriz
+  </div>
   <div class="login-box">
     <h2>quem é você?</h2>
     <div class="input-box">
@@ -97,8 +120,10 @@ button{ margin-top:10px; padding:12px 20px; border:none; border-radius:10px; bac
       </div>
     </div>
 
+    <!-- PÁGINA FINAL COM FOTO GRANDE E WHATSAPP -->
     <div class="page center">
       <h2>EU TE AMO, MEU AMOR 🩷🤍🩵💜</h2>
+      <img src="imagens/bea5.jpg" class="photo-large">
       <a class="whats" href="https://wa.me/5513996032997?text=Eu%20te%20amo." target="_blank">clique aqui 💬</a>
       <div class="button-container">
         <button class="prev" onclick="prevPage()">← Voltar</button>
@@ -109,32 +134,47 @@ button{ margin-top:10px; padding:12px 20px; border:none; border-radius:10px; bac
 </div>
 
 <script>
-let currentPage=0;
-const pages=document.querySelectorAll(".page");
+let currentPage = 0;
+const pages = document.querySelectorAll(".page");
+
+function showPage(index){
+  pages.forEach((p,i)=>{
+    if(i === index){
+      p.style.display = "block";
+      setTimeout(()=>{ p.classList.add("active"); }, 50);
+    } else {
+      p.classList.remove("active");
+      setTimeout(()=>{ p.style.display = "none"; }, 700);
+    }
+  });
+}
 
 function nextPage(){
-  pages[currentPage].classList.remove("active");
-  if(currentPage<pages.length-1) currentPage++;
-  pages[currentPage].classList.add("active");
+  if(currentPage < pages.length -1){
+    currentPage++;
+    showPage(currentPage);
+  }
 }
 
 function prevPage(){
-  pages[currentPage].classList.remove("active");
-  if(currentPage>0) currentPage--;
-  pages[currentPage].classList.add("active");
+  if(currentPage > 0){
+    currentPage--;
+    showPage(currentPage);
+  }
 }
 
 function entrar(){
-  const senha=document.getElementById("senha").value;
+  const senha = document.getElementById("senha").value;
   if(senha==="Amor da sua vida"){
     document.getElementById("login").style.display="none";
     document.getElementById("content").style.display="block";
+    showPage(currentPage);
   } else alert("senha incorreta 💔");
 }
 
 function verSenha(){
-  const s=document.getElementById("senha");
-  s.type=s.type==="password"?"text":"password";
+  const s = document.getElementById("senha");
+  s.type = s.type==="password"?"text":"password";
 }
 </script>
 
