@@ -61,13 +61,6 @@ button{ margin-top:10px; padding:14px 22px; border:none; border-radius:10px; bac
   font-size:28px;
   line-height:1.9;
   text-align:justify;
-  opacity:0;
-  transform: translateY(50px);
-  transition: all 1s ease;
-}
-.text-box.show{
-  opacity:1;
-  transform: translateY(0);
 }
 .text-box img{
   width:200px;
@@ -186,21 +179,6 @@ function verSenha(){
   const s=document.getElementById("senha");
   s.type = s.type==="password"?"text":"password";
 }
-
-// CINEMATIC SCROLL CORRIGIDO
-const boxes = document.querySelectorAll('.text-box');
-function checkBoxes(){
-  const triggerBottom = window.innerHeight * 0.85;
-  boxes.forEach(box=>{
-    const boxTop = box.getBoundingClientRect().top;
-    if(boxTop < triggerBottom){
-      box.classList.add('show');
-    }
-  });
-}
-
-window.addEventListener('scroll', checkBoxes);
-window.addEventListener('load', checkBoxes);
 </script>
 
 </body>
