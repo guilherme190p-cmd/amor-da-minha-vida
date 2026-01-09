@@ -6,7 +6,11 @@
 <title>Amor da Minha Vida</title>
 <style>
 *{ margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
-body{ overflow:hidden; color:#fff; }
+body{
+  overflow:hidden;
+  color:#fff;
+  background:#f5e6c4; /* fundo da intro para evitar tela preta */
+}
 
 /* ===== INTRO ===== */
 #intro{
@@ -110,26 +114,27 @@ button{ margin-top:10px; padding:12px 20px; border:none; border-radius:10px; bac
   <div class="text-box">
     <h1>Essa é a nossa história, Beatriz 🤍</h1>
     <p>Cada momento, cada conversa, cada risada que compartilhamos me mostrou que o nosso amor é único e verdadeiro.</p>
-  </div>
-
-  <div class="text-box">
-    <p>Tudo começou no <b>09/11</b>, quando eu reagi ao seu story do aquário e te falar, eu nem tava botando fé que você iria responder, mas respondeu né. Quem diria que aquilo seria o início de uma amizade tão especial? Desde o primeiro instante, senti algo diferente.</p>
     <img src="imagens/bea1.jpg">
   </div>
 
   <div class="text-box">
-    <p>No começo era só amizade, e pra te conquistar tive que inventar <b>muitaaaa coisa</b> e você sabe disso KKKK. Me esforcei em cada detalhe, e valeu a pena, porque encontrei o amor verdadeiro com você.</p>
+    <p>Tudo começou no <b>09/11</b>, quando eu reagi ao seu story do aquário e te falar, eu nem tava botando fé que você iria responder, mas respondeu né. Quem diria que aquilo seria o início de uma amizade tão especial? Desde o primeiro instante, senti algo diferente.</p>
     <img src="imagens/bea2.jpg">
   </div>
 
   <div class="text-box">
-    <p>Quando algumas das suas amigas desconfiavam de mim, você nunca desistiu. Eu agradeço muito por isso. Hoje consigo te amar e me sentir amado de verdade por você. Mesmo com a distância, nada vai separar a gente.</p>
+    <p>No começo era só amizade, e pra te conquistar tive que inventar <b>muitaaaa coisa</b> e você sabe disso KKKK. Me esforcei em cada detalhe, e valeu a pena, porque encontrei o amor verdadeiro com você.</p>
     <img src="imagens/bea3.jpg">
   </div>
 
   <div class="text-box">
-    <p>Lembro do dia <b>24/12</b>, quando nos declaramos oficialmente, e depois daquilo me senti tão aliviado, porque eu conseguir falar “Eu te amo” pra pessoa que eu mais queria no momento. A gente já havia se declarado, mas ainda não tinha o pedido de namoro. Confesso que fiquei em dúvida no dia da data, mas nunca ficaria em dúvida de você. <b>01/01/2026</b>, nosso pedido de namoro, eu fiquei muito feliz, nosso ano começando com o pé direito, e vamos seguir juntos. Cada data, cada lembrança, cada emoção, me faz te querer ainda mais.</p>
+    <p>Quando algumas das suas amigas desconfiavam de mim, você nunca desistiu. Eu agradeço muito por isso. Hoje consigo te amar e me sentir amado de verdade por você. Mesmo com a distância, nada vai separar a gente.</p>
     <img src="imagens/bea4.jpg">
+  </div>
+
+  <div class="text-box">
+    <p>Lembro do dia <b>24/12</b>, quando nos declaramos oficialmente, e depois daquilo me senti tão aliviado, porque eu conseguir falar “Eu te amo” pra pessoa que eu mais queria no momento. A gente já havia se declarado, mas ainda não tinha o pedido de namoro. Confesso que fiquei em dúvida no dia da data, mas nunca ficaria em dúvida de você. <b>01/01/2026</b>, nosso pedido de namoro, eu fiquei muito feliz, nosso ano começando com o pé direito, e vamos seguir juntos. Cada data, cada lembrança, cada emoção, me faz te querer ainda mais.</p>
+    <img src="imagens/bea5.jpg">
   </div>
 
   <div class="text-box">
@@ -139,7 +144,7 @@ button{ margin-top:10px; padding:12px 20px; border:none; border-radius:10px; bac
   <div class="text-box">
     <h2>EU TE AMO, MEU AMOR 🩷🤍🩵💜</h2>
     <p>Nada vai mudar isso. Nada vai separar a gente. Você é a minha vida, meu mundo, meu tudo.</p>
-    <img src="imagens/bea5.jpg">
+    <img src="imagens/bea7.jpg">
     <a class="whats" href="https://wa.me/5513996032997?text=Eu%20te%20amo." target="_blank">clique aqui 💬</a>
   </div>
 </div>
@@ -148,12 +153,14 @@ button{ margin-top:10px; padding:12px 20px; border:none; border-radius:10px; bac
 // INTRO
 window.addEventListener("load", ()=>{
   const intro = document.getElementById("intro");
+  const login = document.getElementById("login");
   intro.style.opacity = "1"; // fade in
+
   setTimeout(()=>{
     intro.style.opacity = "0"; // fade out
     setTimeout(()=>{
       intro.style.display="none";
-      document.getElementById("login").style.display="flex"; // mostra login
+      login.style.display="flex"; // mostra login
     },1000);
   },3000);
 });
