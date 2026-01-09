@@ -4,72 +4,79 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amor da Minha Vida</title>
-
 <style>
 *{ margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
-body{ overflow:hidden; color:#000; }
+body{ overflow:hidden; color:#fff; }
 
-/* ===== LOGIN / TELA INICIAL ===== */
-#login{
+/* ===== INTRO ===== */
+#intro{
   position:fixed; inset:0;
-  background:url("imagens/IMG-20260108-WA0040.jpg") center/cover no-repeat;
-  display:flex; align-items:center; justify-content:center;
-  flex-direction:column;
+  background:#f5e6c4; /* cor de fundo da intro */
+  display:flex; justify-content:center; align-items:center;
+  text-align:center;
+  font-size:36px;
+  font-weight:bold;
+  color:#c27f60;
+  opacity:0;
+  transition: opacity 3s ease;
+  z-index:9999;
 }
-#login .credits{
-  position:absolute; top:10px; right:15px;
-  color:white; font-size:16px; text-align:right;
-  text-shadow: 1px 1px 5px black;
+
+/* ===== LOGIN ===== */
+#login{
+  display:none;
+  position:fixed; inset:0;
+  background:url("imagens/bea6.jpg") center/cover no-repeat;
+  display:flex; flex-direction:column; justify-content:center; align-items:center;
 }
 .login-box{
-  background:rgba(0,0,0,0.5); padding:25px; border-radius:15px;
-  width:85%; max-width:320px; text-align:center; color:white;
+  background: rgba(0,0,0,0.5);
+  padding:25px; border-radius:15px; text-align:center;
+  width:85%; max-width:320px;
 }
-.input-box{ position:relative; margin-bottom:15px; }
+.input-box{ position:relative; margin-bottom:15px; width:100%; }
 .input-box input{
   width:100%; padding:12px; border:none; border-radius:10px; font-size:16px; text-align:center;
 }
 .eye{ position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer; }
 button{ margin-top:10px; padding:12px 20px; border:none; border-radius:10px; background:#c27f60; color:white; font-size:16px; cursor:pointer; }
 
-/* ===== LIVRO ===== */
-#content{ display:none; position:fixed; inset:0; background:#f5e6c4; overflow:hidden;}
-.book{ height:100%; width:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:40px;}
-.page{
+/* ===== PÁGINA DE TEXTOS ===== */
+#content{
   display:none;
-  height:100%;
-  width:100%;
-  position:relative;
-  padding:20px;
+  position:fixed; inset:0;
+  background:url('imagens/bea7.jpg') center/cover no-repeat;
   overflow-y:auto;
-  opacity:0;
-  transition: opacity 0.7s ease;
+  padding:40px;
 }
-.page.active{
+.text-box{
+  background: rgba(0,0,0,0.5); /* escuro e transparente */
+  padding:20px;
+  border-radius:15px;
+  margin-bottom:30px;
+  max-width:90%;
+  color:white;
+  font-size:22px;
+  line-height:1.8;
+  text-align:justify;
+}
+.text-box img{
+  width:150px;
+  border-radius:10px;
   display:block;
-  opacity:1;
+  margin:15px auto;
 }
-.page p{ font-size:22px; line-height:1.8; text-align:justify; max-width:90%; margin:0 auto;}
-.page h1{ font-size:36px; margin-bottom:20px; text-align:center;}
-.page h2{ font-size:32px; text-align:center; margin-top:25px;}
-.photo{ width:150px; border-radius:10px; margin:15px auto; display:block;}
-.photo-large{ width:80%; max-width:600px; border-radius:15px; margin:20px auto; display:block;}
-.next, .prev{
-  margin:10px; padding:10px 20px; border:none; border-radius:10px; background:#c27f60; color:white; font-size:16px; cursor:pointer;
-}
-.button-container{ display:flex; justify-content:center; gap:20px; margin-top:20px;}
-.whats{ display:inline-block; margin-top:25px; padding:12px 20px; background:#25D366; color:white; border-radius:30px; text-decoration:none; font-size:16px;}
 </style>
 </head>
-
 <body>
+
+<!-- INTRO -->
+<div id="intro">
+  <h1>De: Guilherme<br>Para: Beatriz</h1>
+</div>
 
 <!-- LOGIN -->
 <div id="login">
-  <div class="credits">
-    De: Guilherme<br>
-    Para: Beatriz
-  </div>
   <div class="login-box">
     <h2>quem é você?</h2>
     <div class="input-box">
@@ -80,100 +87,57 @@ button{ margin-top:10px; padding:12px 20px; border:none; border-radius:10px; bac
   </div>
 </div>
 
-<!-- LIVRO -->
+<!-- CONTEÚDO -->
 <div id="content">
-  <div class="book">
-
-    <div class="page active">
-      <h1>FELIZ 2 MESES AMOR 💖</h1>
-      <p>essa é a nossa história, Beatriz 🤍. Cada momento, cada conversa, cada risada que compartilhamos me mostrou que nosso amor é único e verdadeiro.</p>
-      <img src="imagens/bea1.jpg" class="photo">
-      <div class="button-container">
-        <button class="next" onclick="nextPage()">Próxima →</button>
-      </div>
-    </div>
-
-    <div class="page">
-      <p>Tudo começou no <b>09/11</b>. Eu reagi ao seu story, aquele do aquário, e sem perceber, uma amizade especial começou a florescer.</p>
-      <img src="imagens/bea2.jpg" class="photo">
-      <div class="button-container">
-        <button class="prev" onclick="prevPage()">← Voltar</button>
-        <button class="next" onclick="nextPage()">Próxima →</button>
-      </div>
-    </div>
-
-    <div class="page">
-      <p>No começo era amizade, e pra te conquistar tive que inventar muitas coisas. Mas cada esforço valeu a pena porque encontrei o amor verdadeiro com você.</p>
-      <img src="imagens/bea3.jpg" class="photo">
-      <div class="button-container">
-        <button class="prev" onclick="prevPage()">← Voltar</button>
-        <button class="next" onclick="nextPage()">Próxima →</button>
-      </div>
-    </div>
-
-    <div class="page">
-      <p>Mesmo quando algumas amigas desconfiavam de mim, você nunca desistiu. Sou muito grato por isso. Hoje consigo amar e me sentir amado de verdade, mesmo com a distância, nada vai separar a gente.</p>
-      <img src="imagens/bea4.jpg" class="photo">
-      <div class="button-container">
-        <button class="prev" onclick="prevPage()">← Voltar</button>
-        <button class="next" onclick="nextPage()">Próxima →</button>
-      </div>
-    </div>
-
-    <!-- PÁGINA FINAL COM FOTO GRANDE E WHATSAPP -->
-    <div class="page center">
-      <h2>EU TE AMO, MEU AMOR 🩷🤍🩵💜</h2>
-      <img src="imagens/bea5.jpg" class="photo-large">
-      <a class="whats" href="https://wa.me/5513996032997?text=Eu%20te%20amo." target="_blank">clique aqui 💬</a>
-      <div class="button-container">
-        <button class="prev" onclick="prevPage()">← Voltar</button>
-      </div>
-    </div>
-
+  <div class="text-box">
+    <p>Essa é a nossa história, Beatriz 🤍. Cada momento, cada conversa, cada risada que compartilhamos me mostrou que nosso amor é único e verdadeiro.</p>
+    <img src="imagens/bea1.jpg">
+  </div>
+  <div class="text-box">
+    <p>Tudo começou no <b>09/11</b>. Eu reagi ao seu story, aquele do aquário, e sem perceber, uma amizade especial começou a florescer.</p>
+    <img src="imagens/bea2.jpg">
+  </div>
+  <div class="text-box">
+    <p>No começo era amizade, e pra te conquistar tive que inventar muitas coisas. Mas cada esforço valeu a pena porque encontrei o amor verdadeiro com você.</p>
+    <img src="imagens/bea3.jpg">
+  </div>
+  <div class="text-box">
+    <p>Mesmo quando algumas amigas desconfiavam de mim, você nunca desistiu. Sou muito grato por isso. Hoje consigo amar e me sentir amado de verdade, mesmo com a distância, nada vai separar a gente.</p>
+    <img src="imagens/bea4.jpg">
+  </div>
+  <div class="text-box">
+    <h2>EU TE AMO, MEU AMOR 🩷🤍🩵💜</h2>
+    <img src="imagens/bea5.jpg">
+    <a class="whats" href="https://wa.me/5513996032997?text=Eu%20te%20amo." target="_blank" style="display:inline-block; margin-top:15px; padding:12px 20px; background:#25D366; color:white; border-radius:30px; text-decoration:none;">clique aqui 💬</a>
   </div>
 </div>
 
 <script>
-let currentPage = 0;
-const pages = document.querySelectorAll(".page");
+// INTRO
+window.addEventListener("load", ()=>{
+  const intro = document.getElementById("intro");
+  intro.style.opacity = "1"; // fade in
+  setTimeout(()=>{
+    intro.style.opacity = "0"; // fade out
+    setTimeout(()=>{
+      intro.style.display="none";
+      document.getElementById("login").style.display="flex"; // mostra login
+    },1000);
+  },3000);
+});
 
-function showPage(index){
-  pages.forEach((p,i)=>{
-    if(i === index){
-      p.style.display = "block";
-      setTimeout(()=>{ p.classList.add("active"); }, 50);
-    } else {
-      p.classList.remove("active");
-      setTimeout(()=>{ p.style.display = "none"; }, 700);
-    }
-  });
-}
-
-function nextPage(){
-  if(currentPage < pages.length -1){
-    currentPage++;
-    showPage(currentPage);
-  }
-}
-
-function prevPage(){
-  if(currentPage > 0){
-    currentPage--;
-    showPage(currentPage);
-  }
-}
-
+// LOGIN
 function entrar(){
-  const senha = document.getElementById("senha").value;
+  const senha=document.getElementById("senha").value;
   if(senha==="Amor da sua vida"){
     document.getElementById("login").style.display="none";
     document.getElementById("content").style.display="block";
-    showPage(currentPage);
   } else alert("senha incorreta 💔");
 }
 
+// OLHINHO SENHA
 function verSenha(){
-  const s = document.getElementById("senha");
+  const s=document.getElementById("senha");
   s.type = s.type==="password"?"text":"password";
 }
 </script>
