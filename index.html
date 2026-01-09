@@ -16,7 +16,7 @@ html, body{ height:100%; background:#f5e6c4; overflow-x:hidden; color:#fff; }
   font-size:40px;
   font-weight:bold;
   color:#c27f60;
-  background:#f5e6c4;
+  background:#000; /* FUNDO PRETO */
   opacity:0;
   transition: opacity 3s ease;
   z-index:9999;
@@ -178,30 +178,29 @@ function entrar(){
     document.getElementById("login").style.display="none";
     document.getElementById("content").style.display="block";
     window.scrollTo(0,0);
-    revealText();
   } else alert("senha incorreta 💔");
 }
 
+// MOSTRAR SENHA
 function verSenha(){
   const s=document.getElementById("senha");
   s.type = s.type==="password"?"text":"password";
 }
 
-// CINEMATIC SCROLL
-function revealText(){
-  const boxes = document.querySelectorAll('.text-box');
-  function checkBoxes(){
-    const triggerBottom = window.innerHeight * 0.85;
-    boxes.forEach(box=>{
-      const boxTop = box.getBoundingClientRect().top;
-      if(boxTop < triggerBottom){
-        box.classList.add('show');
-      }
-    });
-  }
-  checkBoxes();
-  window.addEventListener('scroll', checkBoxes);
+// CINEMATIC SCROLL CORRIGIDO
+const boxes = document.querySelectorAll('.text-box');
+function checkBoxes(){
+  const triggerBottom = window.innerHeight * 0.85;
+  boxes.forEach(box=>{
+    const boxTop = box.getBoundingClientRect().top;
+    if(boxTop < triggerBottom){
+      box.classList.add('show');
+    }
+  });
 }
+
+window.addEventListener('scroll', checkBoxes);
+window.addEventListener('load', checkBoxes);
 </script>
 
 </body>
